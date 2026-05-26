@@ -13,7 +13,8 @@ The index of raw_df is dates corresponding to the date the market factor value w
 given a simulation lookback window of N which is set to one year (250 business days) by default, and ending at T which by default is set to most recent date
 1. Simple lookback of one year, using rtn_df
 2. Simple lookback of one year using sd_rtn times the most recent sigma
-3. Sample all pairwise combinations of different dates t_i and t_j in sd_rtn_df, such that t_i < t_j, the scenario return is the difference between the rows t_i and t_j of sd_rtn_df, divided by sqrt(2), multiplied by the most recent sigma
+3. Sample all pairwise combinations of different dates t_i and t_j in sd_rtn_df, such that t_i < t_j, the scenario return is the difference between the rows t_i and t_j of sd_rtn_df, divided by sqrt(2), multiplied by the most recent sigma.
+The number of all pairwise combinations could be too large. Therefore, instead of using all possible pairwise combinations, sample only M, default to 1000 of such combinations, then using antithetic method by doubling the number of scenarios by flipping the sign of each scenario
 # Calculate Value at Risk (VaR) and Expected Shortfall (ES)
 - For the scenarios generated in the simulate scenario section above, calculate VaR and ES at given percentile, such as 99% or 97.5%. Note that VaR and ES may use different percentiles
 - Calculate rolling VaR and ES for historical periods, such as VaR for rolling 1-year windows historically
